@@ -1,0 +1,84 @@
+<div class="cardStyle p-5">
+    <div class="row d-flex align-items-center">
+    <div class="col-md-5">
+        <h4 class="fw-bold fs-5">
+            {{"workingtime" | translate}}
+        </h4>
+        <p class="text-muted">   
+Configure your week settings here. Simply move the sliders and add/remove break times to set up work hours.
+        </p>
+    </div>
+    <div class="col-md-7 text-end">
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="Advanced Settings">{{"advancesetting" | translate}}</mat-button-toggle>
+            <mat-button-toggle value="traditional settings">{{"traditionsetting" | translate}}</mat-button-toggle>
+          </mat-button-toggle-group>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+              <form [formGroup]="workingDaysForm">
+                <div formArrayName="days">
+                  <div *ngFor="let day of getDaysArray(); let i = index">
+                    <div [formGroupName]="i">
+                      <div class="row mb-3">
+                        <div class="col-md-4">
+                          <div class="row d-flex mb-3">
+                            <div class="col-md-2">
+                            <span>{{ getDayName(i) }}</span>
+                            </div>
+                          <div class="col-md-6 ms-4">
+                            <label class="toggle">
+                              <input
+                                class="toggle__checkbox"
+                                type="checkbox"
+                                formControlName="isActive"
+                                (click)="toggleDay(i)"
+                              />
+                              <span class="toggle__switch"></span>
+                            </label>
+                          </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-8 ">
+                          <div *ngIf="showSlots[i]" class="d-flex dateTimeStyle">
+                            <div class="d-flex flex-column me-5 startStyle">
+                              <label>Start Time</label>
+                              <input type="datetime-local" formControlName="startTime"  />
+                            </div>
+                            <div class="d-flex flex-column">
+                              <label>End Time</label>
+                              <input type="datetime-local" formControlName="endTime" />
+                            </div>
+                            <div class="d-flex align-items-center align-self-end mb-1 ms-2">
+                              <button class="btn p-0 text-center mt-1 iconsStyle" type="button" (click)="addSlot(i)"><mat-icon>add</mat-icon></button>
+                            <mat-icon class="ms-3 fileStyle">file_copy</mat-icon>
+                            </div>
+                          </div>
+                          <div *ngIf="showSlots[i]" formArrayName="availableSlots">
+                            <div *ngFor="let slot of getSlotsArray(i)?.controls; let j = index">
+                              <div [formGroupName]="j" class="d-flex align-items-center dateTimeStyle">
+                                <div class="d-flex flex-column me-5 startStyle">
+                                  <label>Start Time</label>
+                                  <input type="datetime-local" formControlName="startTime" />
+                                </div>
+                                <div class="d-flex flex-column">
+                                  <label>End Time</label>
+                                  <input type="datetime-local" formControlName="endTime" />
+                                </div>
+                                <div class="d-flex align-items-center align-self-end mb-1 ms-2">
+                                <button class="btn p-0 text-center ms-2 iconsStyle" type="button" (click)="removeSlot(i, j)"><mat-icon >remove</mat-icon></button>
+                                </div>
+                              </div>
+                            </div>    
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+        </div>
+    </div>
+</div> 

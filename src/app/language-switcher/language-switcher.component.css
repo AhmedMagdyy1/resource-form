@@ -1,0 +1,18 @@
+.language-switcher-container {
+    text-align: center;
+    margin: 10px;
+}
+.language-switcher-button {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #007bff !important; 
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+  
+.language-switcher-button:hover {
+    background-color: #0056b3 !important;
+}

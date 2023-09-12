@@ -1,0 +1,18 @@
+.rowWidth {
+    background-color: #F7F7F7 !important;
+    border-radius: 12px;
+    height: 313.01px;
+}
+
+
+
+.counterHolder{
+    border: 1px solid #D9D9D9;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+.rtl {
+    direction: rtl;
+}

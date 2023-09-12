@@ -1,0 +1,15 @@
+.rowWidth {
+    background-color: #F7F7F7 !important;
+    border-radius: 12px;
+    height: 313.01px;
+}
+
+.resourceType{
+    background-color: #F7F7F7 !important;
+    border-radius: 12px;
+    height: 69.78px;
+}
+
+.rtl {
+    direction: rtl;
+}

@@ -1,0 +1,10 @@
+{
+  "welcome": "Welcome",
+  "about": "About",
+  "resourceAvailable":"The resource is available to",
+  "nameofresource":"Name of Resource",
+  "saveresource":"Save Changes",
+  "workingtime":"Determine the work timing for the resource",
+  "advancesetting":"Advanced Settings",
+  "traditionsetting":"Traditional Settings"
+}

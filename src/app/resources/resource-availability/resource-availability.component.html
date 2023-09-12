@@ -1,0 +1,46 @@
+<div class="row rowWidth p-5" [ngClass]="{'rtl':isArabic}">
+  <form [formGroup]="myForm">
+    <h5>{{"resourceAvailable" | translate}}</h5>
+    <div class="d-flex align-items-center">
+        <input type="number" class="form-control rounded-3 border-1" formControlName="resourcesAvailableTo" placeholder="{{ 'resourceAvailable' | translate }}">
+    <mat-form-field>
+        <mat-label>Month</mat-label>
+        <mat-select formControlName="month">
+          <mat-option *ngFor="let month of months ; let i = index" [value]="month">
+            {{month}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <h6 >Resource Time</h6>
+    <mat-radio-group aria-label="Select an option" class="d-flex align-items-center resourceTimeStyle" formControlName="selectedRadioValue">
+        <mat-radio-button value="1" (change)="radioValueChanged(1)">
+          <mat-icon class="fs-5 text-muted">inbox</mat-icon>
+          Time of Service
+        </mat-radio-button>
+        <mat-radio-button value="2" (change)="radioValueChanged(2)">
+          <mat-icon class="fs-5 text-muted">access_time</mat-icon>
+          Fixed Time
+        </mat-radio-button>
+        <div class="counterHolder" *ngIf="selectedRadioValue === 2" >
+          <button  class="decrement-button btn btn-primary" (click)="decrement()">-</button>
+          {{ minutes }} minutes
+          <button  class="increment-button btn btn-primary" (click)="increment()">+</button>
+        </div>
+      </mat-radio-group>
+      <h6 >Multi Reservation</h6>
+      <mat-radio-group aria-label="Select an option" class="d-flex align-items-center pb-2" formControlName="selectedPersonValue">
+        <mat-radio-button value="1" (change)="personChangeValue(1)">
+          <mat-icon>person_outline</mat-icon>
+          For One
+        </mat-radio-button>
+        <mat-radio-button value="2" (change)="personChangeValue(2)">
+          <mat-icon>people_outline</mat-icon>
+          More than one in same time
+        </mat-radio-button>
+        <div *ngIf="selectedPersonValue === 2" class="w-50 ms-1">
+          <input type="number" class="form-control rounded-3 border-1" formControlName="numberOfPeople" placeholder="NO Of People">
+        </div>
+      </mat-radio-group>
+    </form>
+</div>
